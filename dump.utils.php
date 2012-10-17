@@ -42,3 +42,9 @@ function output($outer) {
 		foreach($inner as $key => $value)
 			echo $key . " " . $value . PHP_EOL;
 }
+
+function exception_handler($exception) {
+	echo "Uncaught exception: " , $exception->getMessage(), "\n";
+	exit -1;
+}
+set_exception_handler('exception_handler');

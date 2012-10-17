@@ -29,5 +29,52 @@ if(isset($argv[1]) && strtolower($argv[1]) == "config") {
 		);
 	}
 	output($output);
-	exit 0;
+	exit(0);
 }
+
+//No config line, get miner data
+$response = queryMiner("devs");
+
+/*
+[GPU] => 0
+[Name] => OCL
+[ID] => 0
+[Enabled] => Y
+[Status] => Alive
+[Temperature] => 69
+[MHS av] => 157.24
+[MHS 5s] => 156.22
+[Accepted] => 184
+[Rejected] => 0
+[Hardware Errors] => 0
+[Utility] => 2.08
+[Last Share Pool] => 0
+[Last Share Time] => 1350445775
+[Total MH] => 834096.0707
+[Diff1 Work] => 184
+[Difficulty Accepted] => 184
+[Difficulty Rejected] => 0
+[Last Share Difficulty] => 1
+[Fan Speed] => -1
+[Fan Percent] => 78
+[GPU Clock] => 600
+[Memory Clock] => 1200
+[GPU Voltage] => 1
+[GPU Activity] => 0
+[Powertune] => 0
+[Intensity] => 9
+*/
+$output = array();
+foreach($response["DEVS"] as $value) {
+	$id = $value["ID"];
+	$output[$id] = array(
+		"multigraph" => "miner_gpu" . $i,
+		"hash5s.value" => $value["MHS 5s"],
+		"hashavg.value" => $value["MHS av"],
+		"intensity.value" => $value["Intensity"],
+		"fan.value" => $value["Fan Percent"],
+		"temp.value" => $value["Temperature"],
+		"utility" => $value["Utility"],
+	);
+}
+output($output);

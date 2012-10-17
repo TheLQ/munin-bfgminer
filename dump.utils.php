@@ -38,9 +38,11 @@ function queryMiner($cmd) {
 }
 
 function output($outer) {
-	foreach($outer as $inner)
+	foreach($outer as $inner) {
 		foreach($inner as $key => $value)
 			echo $key . " " . $value . PHP_EOL;
+		echo PHP_EOL;
+	}
 }
 
 function exception_handler($exception) {

@@ -1,9 +1,14 @@
 #!/usr/bin/php
 <?php
+#%# family=auto
+#%# capabilities=autoconf
 include 'dump.utils.php';
 
 //First, figure out what config mode were in
-if(isset($argv[1]) && strtolower($argv[1]) == "config") {
+if(isset($argv[1]) && strtolower($argv[1]) == "autoconf") {
+	echo "yes" . PHP_EOL;
+	exit;
+} else if(isset($argv[1]) && strtolower($argv[1]) == "config") {
 	/*
 	multigraph if_bytes
 	graph_title $host interface traffic

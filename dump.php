@@ -23,24 +23,18 @@ if(isset($argv[1]) && strtolower($argv[1]) == "autoconf") {
 		"hashes" => array(
 			"multigraph" => "miner_hashes",
 			"graph_title" => "GPU Hash Rate",
-			"graph_order" => "recv send",
-			//graph_args --base 1000
 			"graph_vlabel" => "MegaHashes per \${graph_period}",
 			"graph_category" => "sensors",
 			"graph_info" => "Statistics of GPU Hash Rate"
 		), "cooling" => array (
 			"multigraph" => "miner_cooling",
 			"graph_title" => "GPU Cooling stats",
-			"graph_order" => "recv send",
-			//graph_args --base 1000
 			"graph_vlabel" => "Temp(C) and Fan(%) per \${graph_period}",
 			"graph_category" => "sensors",
 			"graph_info" => "Statistics of GPU cooling"
 		), "int" => array (
 			"multigraph" => "miner_int",
 			"graph_title" => "GPU Intensity",
-			"graph_order" => "recv send",
-			//graph_args --base 1000
 			"graph_vlabel" => "Intensity at \${graph_period}",
 			"graph_category" => "sensors",
 			"graph_info" => "Statistics of GPU intensity"
@@ -53,10 +47,12 @@ if(isset($argv[1]) && strtolower($argv[1]) == "autoconf") {
 	for($i = 0; $i < $numCards; $i++) {
 		$output["hashes"]["gpu{$i}_5s.label"] = "GPU $i 5s average MegaHashes/sec";
 		$output["hashes"]["gpu{$i}_avg.label"] = "GPU $i All time average MegaHashes/sec";
+		$output["hashes"]["graph_order"] .= "gpu{$i}_5s gpu{$i}_avg ";
 		$output["cooling"]["gpu{$i}_temp.label"] = "GPU $i Temp (Celcius)";
 		$output["cooling"]["gpu{$i}_fan.label"] = "GPU $i Fan Percent";
 		$output["cooling"]["gpu{$i}_fan.min"] = "0";
 		$output["cooling"]["gpu{$i}_fan.max"] = "100";
+		$output["cooling"]["graph_order"] .= "gpu{$i}_fan gpu{$i}_temp ";
 		$output["int"]["gpu{$i}_int.label"] = "GPU $i intensity";
 		$output["int"]["gpu{$i}_int.min"] = "0";
 		$output["int"]["gpu{$i}_int.max"] = "14";

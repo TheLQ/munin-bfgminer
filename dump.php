@@ -25,13 +25,15 @@ if(isset($argv[1]) && strtolower($argv[1]) == "autoconf") {
 			"graph_title" => "GPU Hash Rate",
 			"graph_vlabel" => "MegaHashes per second",
 			"graph_category" => "sensors",
-			"graph_info" => "Statistics of GPU Hash Rate"
+			"graph_info" => "Statistics of GPU Hash Rate",
+			"graph_order" => ""
 		), "cooling" => array (
 			"multigraph" => "miner_cooling",
 			"graph_title" => "GPU Cooling stats",
 			"graph_vlabel" => "Temp(C) and Fan(%)",
 			"graph_category" => "sensors",
-			"graph_info" => "Statistics of GPU cooling"
+			"graph_info" => "Statistics of GPU cooling",
+			"graph_order" => ""
 		), "int" => array (
 			"multigraph" => "miner_int",
 			"graph_title" => "GPU Intensity",

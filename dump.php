@@ -101,7 +101,7 @@ $output["hashes"]["multigraph"] = "miner_hashes";
 $output["cooling"]["multigraph"] = "miner_cooling";
 $output["int"]["multigraph"] = "miner_int";
 foreach($response["DEVS"] as $value) {
-	$id = $value["ID"];
+	$id = $value["GPU"];
 	$output["hashes"]["gpu{$id}_5s.value"] = $value["MHS 5s"];
 	$output["hashes"]["gpu{$id}_avg.value"] = $value["MHS av"];
 	$output["cooling"]["gpu{$id}_temp.value"] = $value["Temperature"];

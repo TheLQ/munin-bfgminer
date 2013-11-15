@@ -57,7 +57,7 @@ if(isset($argv[1]) && strtolower($argv[1]) == "autoconf") {
 		$output["cooling"]["graph_order"] .= "gpu{$i}_fan gpu{$i}_temp ";
 		$output["int"]["gpu{$i}_int.label"] = "GPU $i intensity";
 		$output["int"]["gpu{$i}_int.min"] = "0";
-		$output["int"]["gpu{$i}_int.max"] = "14";
+		$output["int"]["gpu{$i}_int.max"] = "20";
 	}
 	
 	output($output);

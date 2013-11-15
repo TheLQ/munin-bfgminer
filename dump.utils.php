@@ -1,7 +1,7 @@
 <?php
 function queryMiner($cmd) {
 	//Get socket
-	$handle = stream_socket_client("tcp://10.0.0.30:4028", $errno, $errorMessage);
+	$handle = stream_socket_client("tcp://127.0.0.1:4028", $errno, $errorMessage);
 	if ($handle === false)
 		throw new UnexpectedValueException("Failed to connect: $errorMessage");
 
